@@ -17,32 +17,24 @@ def initialise():
     def start():
 
         print(" ** Bienvendio al primer programa ** ")
-        print("  🙋 >>: Tenemos una longitud de "+str(len(frases))+" frases en total.\n")
+        #print("  🙋 >>: Tenemos una longitud de "+str(len(frases))+" frases en total.\n")
 
-        _hour_now = 1
+        _hour_now = 0
 
-        while _hour_now != 1:  
+        while _hour_now != 13:  
             date = datetime.now()
             _hour_now = date.time().hour
             _time_now = date.time().strftime("%H:%M:%S")
             print(" 🕰  >> ", _time_now)
             time.sleep(1)
 
-        if _hour_now == 1:
-            print(" ** Reproducir la frase cada 10 seg. ** ")
+        if _hour_now == 13:
             i= 0
-            while i != 10:
+            while i != 3000:
                 i +=1
-                print(" >> Segundo: ", i)
                 if i % 10 == 0:
-                    position = random.randint(0, len(frases)-1)
-                    print(" >> Position random: ", position)
-                    print(" >> Nueva Frase a escribir: ", frases[position])
-                    file = open('./saludo.txt', 'w')
-                    file.write(frases[position])
-                    file.close()
-                    print(" ** Reproducir el nuevo texto **")
-                    subprocess.call('espeak -ves+m2 -s 130 -f '+'"./saludo.txt"', shell=True)
+                    print(" ** Reproduciendo el texto **")
+                    subprocess.call('espeak -ves+f4 -s 170 '+'"Chicos, la comida esta lista!!"', shell=True)
                 time.sleep(1)
         print("Ha terminado el proceso de iniciar el reloj despertador")
 
